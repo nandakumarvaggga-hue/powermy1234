@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import type { ScanResult } from '../lib/scoring';
-import type { Category } from '../lib/types';
 import { formatScore } from '../lib/scoring';
-import { TIER_CONFIG, CATEGORIES } from '../lib/types';
+import { TIER_CONFIG, CATEGORIES, CATEGORY_STATS, formatStatValue } from '../lib/types';
 import TierBadge from './TierBadge';
 
 interface ShareCardProps {
@@ -20,9 +19,9 @@ export default function ShareCard({
 }: ShareCardProps) {
   const tierConfig = TIER_CONFIG[result.tier];
   const categoryConfig = CATEGORIES[result.category];
+  const catStats = CATEGORY_STATS[result.category];
 
-  // Dominant attributes to display
-  const displayAttrs = Object.entries(result.categoryAttributes)
+  const topStats = Object.entries(result.categoryAttributes)
     .sort(([, a], [, b]) => b - a)
     .slice(0, 3);
 
@@ -33,19 +32,23 @@ export default function ShareCard({
       className="w-full max-w-sm mx-auto bg-black text-white overflow-hidden"
       style={{ aspectRatio: '9 / 16' }}
     >
-      {/* Outer frame */}
-      <div className="relative w-full h-full flex flex-col bg-gradient-to-b from-zinc-900 to-black p-4 border border-white/10">
-        {/* Background grid - subtle */}
+      <div className="relative w-full h-full flex flex-col bg-gradient-to-b from-zinc-950 to-black p-4 border border-white/10">
+        {/* Background grid */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
           backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)',
           backgroundSize: '60px 60px',
         }} />
 
-        {/* Content stack */}
+        {/* Tier glow backdrop */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-10"
+          style={{ background: `radial-gradient(ellipse at 50% 80%, ${tierConfig.glowColor}, transparent 70%)` }}
+        />
+
         <div className="relative z-10 flex flex-col h-full justify-between">
-          {/* Top: POWERLVL Logo */}
+          {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="flex items-center gap-2 mb-2"
@@ -53,76 +56,77 @@ export default function ShareCard({
             <div className="w-5 h-5 bg-amber-500 rounded-sm flex items-center justify-center">
               <span className="text-black font-black text-[10px]">⚡</span>
             </div>
-            <span className="font-black text-[9px] tracking-[0.15em] text-amber-400">POWERLVL</span>
+            <span className="font-black text-[9px] tracking-[0.2em] text-amber-400">POWERLVL</span>
           </motion.div>
 
-          {/* Middle: Image with premium HUD frame */}
+          {/* Image with HUD frame */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.15 }}
-            className="flex-1 mb-3 rounded-lg overflow-hidden border-2 border-amber-500/50 relative"
+            className="flex-1 mb-3 rounded-lg overflow-hidden relative"
+            style={{ border: `2px solid`, borderColor: tierConfig.glowColor }}
           >
-            <img
-              src={imageUrl}
-              alt="Scan"
-              className="w-full h-full object-cover"
-            />
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
+            <img src={imageUrl} alt="Scan" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/70" />
 
-            {/* Corner brackets - premium scanner aesthetic */}
+            {/* Corner brackets */}
             {[
               'top-2 left-2 border-t-2 border-l-2',
               'top-2 right-2 border-t-2 border-r-2',
               'bottom-2 left-2 border-b-2 border-l-2',
               'bottom-2 right-2 border-b-2 border-r-2',
             ].map((pos, i) => (
-              <div
-                key={i}
-                className={`absolute ${pos} w-3 h-3 border-amber-400/60`}
-              />
+              <div key={i} className={`absolute ${pos} w-3 h-3`} style={{ borderColor: tierConfig.glowColor, opacity: 0.7 }} />
             ))}
 
-            {/* Category label - top right */}
+            {/* Category label */}
             <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm px-2 py-1 rounded border border-white/10">
               <span className="text-[8px] font-black tracking-widest">
                 {categoryConfig.emoji} {categoryConfig.label}
               </span>
             </div>
+
+            {/* HUD ID */}
+            <div className="absolute bottom-2 left-2 text-[7px] font-mono tracking-widest opacity-40">
+              PWR_SCAN_CONFIRMED
+            </div>
           </motion.div>
 
-          {/* Score Block - HUGE and Dominant */}
+          {/* Score — dominant centerpiece */}
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2, type: 'spring', damping: 15 }}
-            className="mb-1.5"
+            transition={{ delay: 0.2, type: 'spring', damping: 14 }}
+            className="mb-1"
           >
-            <div className={`text-6xl font-black ${tierConfig.color} leading-none drop-shadow-lg`}>
+            <div
+              className="text-5xl font-black leading-none"
+              style={{ color: tierConfig.glowColor, textShadow: `0 0 30px ${tierConfig.glowColor}` }}
+            >
               {formatScore(result.score)}
             </div>
           </motion.div>
 
-          {/* Tier Badge */}
+          {/* Tier badge */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mb-2"
+            transition={{ delay: 0.28 }}
+            className="mb-2.5"
           >
             <TierBadge tier={result.tier} size="md" />
           </motion.div>
 
-          {/* Category highlight line */}
-          <div className={`h-px bg-gradient-to-r from-transparent via-${categoryConfig.color.split('-')[1]}-500 to-transparent mb-2.5`} />
+          {/* Divider with tier color */}
+          <div className="h-px mb-2.5" style={{ background: `linear-gradient(to right, transparent, ${tierConfig.glowColor}, transparent)` }} />
 
-          {/* Description - if provided */}
+          {/* Description */}
           {description && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.35 }}
+              transition={{ delay: 0.32 }}
               className="mb-2 text-[11px] text-zinc-300 italic leading-snug line-clamp-2"
             >
               "{description}"
@@ -133,46 +137,71 @@ export default function ShareCard({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="mb-2.5 text-xs text-zinc-300 italic leading-tight"
+            transition={{ delay: 0.36 }}
+            className="mb-3 text-[11px] text-zinc-400 italic leading-tight"
           >
             "{result.commentary}"
           </motion.div>
 
-          {/* Attributes Grid - compact */}
+          {/* Top stats — large, cinematic */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.45 }}
-            className="space-y-1 mb-2.5"
+            transition={{ delay: 0.42 }}
+            className="space-y-2 mb-3"
           >
-            {displayAttrs.map(([key, val], i) => (
-              <div key={key} className="flex items-center justify-between text-[10px]">
-                <span className="text-zinc-500 font-semibold tracking-wider">
-                  {key.toUpperCase().slice(0, 6)}
-                </span>
-                <div className="flex-1 h-px bg-zinc-800 mx-2" />
-                <span className={`font-black ${tierConfig.color}`}>{val}</span>
-              </div>
-            ))}
+            {topStats.map(([key, val]) => {
+              const statDef = catStats.find(s => s.label === key);
+              const format = statDef?.format || 'number';
+              const displayVal = formatStatValue(val, format);
+
+              return (
+                <div key={key} className="flex items-center justify-between">
+                  <span className="text-[9px] font-bold tracking-widest text-zinc-600 truncate mr-2">
+                    {key}
+                  </span>
+                  <span
+                    className="font-black text-sm flex-shrink-0"
+                    style={{ color: tierConfig.glowColor }}
+                  >
+                    {displayVal}
+                  </span>
+                </div>
+              );
+            })}
+          </motion.div>
+
+          {/* Global stats row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.48 }}
+            className="grid grid-cols-4 gap-1 mb-3"
+          >
+            {(['AURA', 'POWER', 'STATUS', 'THREAT'] as const).map((stat, i) => {
+              const raw = [result.attributes.aura, result.attributes.power, result.attributes.status, result.attributes.threat][i];
+              const scaled = Math.round(raw * 97 + raw * 2.3);
+              return (
+                <div key={stat} className="bg-white/5 rounded p-1.5 text-center">
+                  <div className="text-[10px] font-black text-white tabular-nums">{scaled.toLocaleString()}</div>
+                  <div className="text-[7px] text-zinc-600 tracking-widest mt-0.5">{stat}</div>
+                </div>
+              );
+            })}
           </motion.div>
 
           {/* Footer divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent mb-2" />
+          <div className="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent mb-2" />
 
-          {/* Footer: User + Tagline */}
+          {/* Footer */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-center space-y-1"
+            transition={{ delay: 0.52 }}
+            className="text-center space-y-0.5"
           >
-            <div className="text-[9px] text-zinc-500 tracking-widest font-semibold">
-              @{username.toUpperCase()}
-            </div>
-            <div className="text-[10px] text-zinc-600 font-light tracking-wide">
-              Everything has a power level.
-            </div>
+            <div className="text-[9px] text-zinc-500 tracking-widest font-semibold">@{username.toUpperCase()}</div>
+            <div className="text-[9px] text-zinc-700 tracking-wide">powerlvl.app — everything has a power level.</div>
           </motion.div>
         </div>
       </div>
