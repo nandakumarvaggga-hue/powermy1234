@@ -12,7 +12,7 @@ const MOCK_PROFILE = {
   username: 'SCANNER_USER',
   totalScans: 24,
   highestScore: 87432,
-  tier: 'SINGULAR' as Tier,
+  tier: 'SS-TIER' as Tier,
   joinDate: 'JAN 2025',
   globalRank: 142,
 };
@@ -28,18 +28,18 @@ const CATEGORY_STATS: Record<Category, { topScore: number; rank: number; scans: 
 
 const ACHIEVEMENTS = [
   { id: 'first_scan', label: 'First Scan', icon: Zap, unlocked: true },
-  { id: 'volatile', label: 'Volatile Achieved', icon: Flame, unlocked: true },
-  { id: 'singular', label: 'Singular Status', icon: Star, unlocked: true },
+  { id: 'stier', label: 'S-TIER Achieved', icon: Flame, unlocked: true },
+  { id: 'sstier', label: 'SS-TIER Status', icon: Star, unlocked: true },
   { id: 'top_100', label: 'Top 100 Global', icon: Trophy, unlocked: false },
   { id: 'limitless', label: 'LIMITLESS', icon: Award, unlocked: false },
 ];
 
 const MOCK_SCAN_HISTORY = [
-  { id: '1', image: 'https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?w=300&h=300&fit=crop', score: 87432, tier: 'SINGULAR' as Tier, category: 'setups' as Category, timeAgo: '2h ago' },
-  { id: '2', image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?w=300&h=300&fit=crop', score: 74221, tier: 'VOLATILE' as Tier, category: 'fitness' as Category, timeAgo: '1d ago' },
-  { id: '3', image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=300&h=300&fit=crop', score: 62105, tier: 'VOLATILE' as Tier, category: 'rides' as Category, timeAgo: '2d ago' },
-  { id: '4', image: 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?w=300&h=300&fit=crop', score: 96741, tier: 'SINGULAR' as Tier, category: 'pets' as Category, timeAgo: '3d ago' },
-  { id: '5', image: 'https://images.pexels.com/photos/2769274/pexels-photo-2769274.jpeg?w=300&h=300&fit=crop', score: 45882, tier: 'CHARGED' as Tier, category: 'drip' as Category, timeAgo: '5d ago' },
+  { id: '1', image: 'https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?w=300&h=300&fit=crop', score: 87432, tier: 'SS-TIER' as Tier, category: 'setups' as Category, timeAgo: '2h ago' },
+  { id: '2', image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?w=300&h=300&fit=crop', score: 74221, tier: 'S-TIER' as Tier, category: 'fitness' as Category, timeAgo: '1d ago' },
+  { id: '3', image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=300&h=300&fit=crop', score: 62105, tier: 'S-TIER' as Tier, category: 'rides' as Category, timeAgo: '2d ago' },
+  { id: '4', image: 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?w=300&h=300&fit=crop', score: 96741, tier: 'SS-TIER' as Tier, category: 'pets' as Category, timeAgo: '3d ago' },
+  { id: '5', image: 'https://images.pexels.com/photos/2769274/pexels-photo-2769274.jpeg?w=300&h=300&fit=crop', score: 45882, tier: 'A-TIER' as Tier, category: 'drip' as Category, timeAgo: '5d ago' },
   { id: '6', image: 'https://images.pexels.com/photos/2346216/pexels-photo-2346216.jpeg?w=300&h=300&fit=crop', score: 100000, tier: 'LIMITLESS' as Tier, category: 'wildcard' as Category, timeAgo: '1w ago' },
 ];
 

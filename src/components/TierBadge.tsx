@@ -18,8 +18,9 @@ export default function TierBadge({ tier, size = 'md', animate = false }: TierBa
   };
 
   const isLimitless = tier === 'LIMITLESS';
-  const isSingular = tier === 'SINGULAR';
-  const isVolatile = tier === 'VOLATILE';
+  const isSSST = tier === 'SSS-TIER';
+  const isSST = tier === 'SS-TIER';
+  const isST = tier === 'S-TIER';
 
   return (
     <motion.div
@@ -32,8 +33,9 @@ export default function TierBadge({ tier, size = 'md', animate = false }: TierBa
         ${config.color} 
         ${config.borderColor} 
         ${isLimitless ? 'bg-gradient-to-r from-amber-950/80 to-orange-950/80 shadow-[0_0_15px_rgba(245,158,11,0.2)]' : config.bgColor}
-        ${isSingular ? 'shadow-[0_0_10px_rgba(251,113,133,0.15)]' : ''}
-        ${isVolatile ? 'shadow-[0_0_8px_rgba(251,146,60,0.1)]' : ''}
+        ${isSSST ? 'shadow-[0_0_12px_rgba(251,113,133,0.2)]' : ''}
+        ${isSST ? 'shadow-[0_0_10px_rgba(251,146,60,0.15)]' : ''}
+        ${isST ? 'shadow-[0_0_8px_rgba(251,191,36,0.1)]' : ''}
       `}
     >
       {isLimitless && (
@@ -43,6 +45,15 @@ export default function TierBadge({ tier, size = 'md', animate = false }: TierBa
           className="mr-1 text-amber-400"
         >
           ◆
+        </motion.span>
+      )}
+      {isSSST && (
+        <motion.span 
+          animate={{ opacity: [0.6, 1, 0.6] }}
+          transition={{ repeat: Infinity, duration: 1.2 }}
+          className="mr-1 text-rose-400"
+        >
+          ★
         </motion.span>
       )}
       {config.label}

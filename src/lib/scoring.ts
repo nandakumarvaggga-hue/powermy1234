@@ -3,50 +3,58 @@ import { getTier, CATEGORIES } from './types';
 
 // Commentary - dramatic, intense, slightly arrogant, meme-aware
 const COMMENTARIES: Record<Tier, string[]> = {
-  DORMANT: [
+  'D-TIER': [
     "The reading is... concerning. Not zero. But close.",
     "Power level detected. Barely. Our sensors almost missed this entirely.",
     "The energy is present. It's just in hibernation mode.",
     "Not a threat. Not yet. But also not nothing.",
-    "Your aura suggests dangerous levels of room temperature energy.",
+    "Everyone starts somewhere. This is that somewhere.",
   ],
-  SPARKING: [
+  'C-TIER': [
     "Something is waking up here. We're watching.",
     "Early signals of a real power source. Keep going.",
-    "The sparks are there. Needs more fuel though.",
+    "The climb is beginning. Potential detected.",
     "Scouter caught something interesting. Don't get comfortable.",
-    "This is the beginning of something. Or the end. We'll see.",
+    "This is the beginning of something real.",
   ],
-  RISING: [
+  'B-TIER': [
     "The climb is real. This isn't average anymore.",
     "Power is actively building. We can feel it from here.",
     "Above the noise. Rising fast. Competitors should worry.",
     "This caught our attention. That's rare.",
-    "Legitimately impressive. The arc continues.",
+    "Legitimately impressive. The trajectory continues.",
   ],
-  CHARGED: [
-    "This setup radiates elite instability.",
+  'A-TIER': [
+    "This radiates elite potential.",
     "The energy here is genuinely threatening.",
-    "Our sensors are warming up. Uncomfortably.",
+    "Our systems are registering something serious.",
     "Whatever this is, it's fully charged and dangerous.",
     "High-level readings. This demands respect.",
-    "Your aura suggests dangerous levels of caffeine dependency.",
+    "Elite status confirmed. Dominance evident.",
   ],
-  VOLATILE: [
-    "This aura has caused psychological damage to our systems.",
-    "Unstable. Dangerous. Absolutely elite. Proceed with caution.",
-    "Our equipment is struggling to contain this reading.",
+  'S-TIER': [
+    "This aura has impressed our hardened systems.",
+    "Elite. Dangerous. Absolutely formidable. Proceed with caution.",
+    "Our equipment is straining to measure this.",
     "Few things register this high. This is one of them.",
-    "The power is leaking. We advise significant distance.",
-    "This room has survived multiple all-nighters. We can tell.",
+    "The power is substantial. We recommend distance.",
+    "Peak performance materialized. We're documenting this.",
   ],
-  SINGULAR: [
-    "One of one. The data confirms it. No duplicates exist.",
+  'SS-TIER': [
+    "One of one. The data confirms it. Legendary status.",
     "There is no comparison point. This is singular by definition.",
     "Our leaderboards needed to be rewritten for this.",
     "We've scanned millions. This is objectively different.",
     "The universe acknowledged this scan. That's not normal.",
-    "This is what peak performance looks like. Documented.",
+    "This is what legendary performance looks like. Archived.",
+  ],
+  'SSS-TIER': [
+    "The limits break. We had to rebuild the systems.",
+    "MAXIMUM READING APPROACHING. THE SCALE TREMBLES.",
+    "Beyond normal parameters. Beyond standard measurement.",
+    "This should not exist according to known performance.",
+    "The algorithm struggled. We forced it to compute anyway.",
+    "You've transcended conventional limits. Congratulations.",
   ],
   LIMITLESS: [
     "The scouter exploded. We had to rebuild the entire system.",
@@ -65,34 +73,25 @@ function randomBetween(min: number, max: number): number {
 function generateAttributes(): Attributes {
   return {
     aura: randomBetween(15, 100),
-    drip: randomBetween(15, 100),
-    discipline: randomBetween(15, 100),
-    chaos_energy: randomBetween(15, 100),
-    presence: randomBetween(15, 100),
-    intimidation: randomBetween(15, 100),
-    rarity: randomBetween(15, 100),
+    power: randomBetween(15, 100),
+    status: randomBetween(15, 100),
+    threat: randomBetween(15, 100),
   };
 }
 
 function attributesToScore(attrs: Attributes): number {
   const weights = {
-    aura: 0.18,
-    drip: 0.14,
-    discipline: 0.14,
-    chaos_energy: 0.16,
-    presence: 0.16,
-    intimidation: 0.12,
-    rarity: 0.10,
+    aura: 0.25,
+    power: 0.25,
+    status: 0.25,
+    threat: 0.25,
   };
 
   const weighted =
     attrs.aura * weights.aura +
-    attrs.drip * weights.drip +
-    attrs.discipline * weights.discipline +
-    attrs.chaos_energy * weights.chaos_energy +
-    attrs.presence * weights.presence +
-    attrs.intimidation * weights.intimidation +
-    attrs.rarity * weights.rarity;
+    attrs.power * weights.power +
+    attrs.status * weights.status +
+    attrs.threat * weights.threat;
 
   // Scale to 0-100000 with dramatic curve
   // Most scores cluster in middle tiers, with rare high/low outliers

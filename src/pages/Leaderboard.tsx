@@ -9,46 +9,46 @@ import type { Tier, Category } from '../lib/types';
 
 const LEADERBOARD_DATA: Record<Category, Array<{ rank: number; username: string; score: number; tier: Tier; totalScans: number; spike: string }>> = {
   setups: [
-    { rank: 1, username: 'CODE_NEXUS', score: 97203, tier: 'SINGULAR' as Tier, totalScans: 76, spike: '+9,403' },
-    { rank: 2, username: 'CYBER_TITAN', score: 91441, tier: 'SINGULAR' as Tier, totalScans: 142, spike: '+6,221' },
-    { rank: 3, username: 'FOCUS_MASTER', score: 84882, tier: 'VOLATILE' as Tier, totalScans: 93, spike: '+4,110' },
-    { rank: 4, username: 'TECH_OVERLORD', score: 72220, tier: 'VOLATILE' as Tier, totalScans: 201, spike: '+2,884' },
-    { rank: 5, username: 'PRODUCTIVITY_GOD', score: 65103, tier: 'VOLATILE' as Tier, totalScans: 167, spike: '+1,921' },
+    { rank: 1, username: 'CODE_NEXUS', score: 97203, tier: 'SS-TIER' as Tier, totalScans: 76, spike: '+9,403' },
+    { rank: 2, username: 'CYBER_TITAN', score: 91441, tier: 'SS-TIER' as Tier, totalScans: 142, spike: '+6,221' },
+    { rank: 3, username: 'FOCUS_MASTER', score: 84882, tier: 'S-TIER' as Tier, totalScans: 93, spike: '+4,110' },
+    { rank: 4, username: 'TECH_OVERLORD', score: 72220, tier: 'S-TIER' as Tier, totalScans: 201, spike: '+2,884' },
+    { rank: 5, username: 'PRODUCTIVITY_GOD', score: 65103, tier: 'S-TIER' as Tier, totalScans: 167, spike: '+1,921' },
   ],
   fitness: [
-    { rank: 1, username: 'IRONVEIL_PRO', score: 94203, tier: 'SINGULAR' as Tier, totalScans: 128, spike: '+6,720' },
-    { rank: 2, username: 'DISCIPLINE_X', score: 87441, tier: 'SINGULAR' as Tier, totalScans: 203, spike: '+4,103' },
-    { rank: 3, username: 'BEAST_MODE_7', score: 79882, tier: 'VOLATILE' as Tier, totalScans: 87, spike: '+2,841' },
-    { rank: 4, username: 'PEAK_FORM', score: 68220, tier: 'VOLATILE' as Tier, totalScans: 134, spike: '+1,220' },
-    { rank: 5, username: 'GRIND_ETERNAL', score: 61033, tier: 'VOLATILE' as Tier, totalScans: 211, spike: '+890' },
+    { rank: 1, username: 'IRONVEIL_PRO', score: 94203, tier: 'SS-TIER' as Tier, totalScans: 128, spike: '+6,720' },
+    { rank: 2, username: 'DISCIPLINE_X', score: 87441, tier: 'SS-TIER' as Tier, totalScans: 203, spike: '+4,103' },
+    { rank: 3, username: 'BEAST_MODE_7', score: 79882, tier: 'S-TIER' as Tier, totalScans: 87, spike: '+2,841' },
+    { rank: 4, username: 'PEAK_FORM', score: 68220, tier: 'S-TIER' as Tier, totalScans: 134, spike: '+1,220' },
+    { rank: 5, username: 'GRIND_ETERNAL', score: 61033, tier: 'S-TIER' as Tier, totalScans: 211, spike: '+890' },
   ],
   rides: [
-    { rank: 1, username: 'DOMINANCE_EDGE', score: 98441, tier: 'SINGULAR' as Tier, totalScans: 94, spike: '+8,881' },
-    { rank: 2, username: 'THREAT_LEVEL_X', score: 92203, tier: 'SINGULAR' as Tier, totalScans: 156, spike: '+6,224' },
-    { rank: 3, username: 'AURA_UNLEASHED', score: 84110, tier: 'VOLATILE' as Tier, totalScans: 201, spike: '+3,934' },
-    { rank: 4, username: 'POWER_SURGE', score: 71882, tier: 'VOLATILE' as Tier, totalScans: 128, spike: '+2,441' },
-    { rank: 5, username: 'VELOCITY_PRIME', score: 63304, tier: 'VOLATILE' as Tier, totalScans: 87, spike: '+1,103' },
+    { rank: 1, username: 'DOMINANCE_EDGE', score: 98441, tier: 'SS-TIER' as Tier, totalScans: 94, spike: '+8,881' },
+    { rank: 2, username: 'THREAT_LEVEL_X', score: 92203, tier: 'SS-TIER' as Tier, totalScans: 156, spike: '+6,224' },
+    { rank: 3, username: 'AURA_UNLEASHED', score: 84110, tier: 'S-TIER' as Tier, totalScans: 201, spike: '+3,934' },
+    { rank: 4, username: 'POWER_SURGE', score: 71882, tier: 'S-TIER' as Tier, totalScans: 128, spike: '+2,441' },
+    { rank: 5, username: 'VELOCITY_PRIME', score: 63304, tier: 'S-TIER' as Tier, totalScans: 87, spike: '+1,103' },
   ],
   drip: [
-    { rank: 1, username: 'PRESENCE_UNLOCKED', score: 93882, tier: 'SINGULAR' as Tier, totalScans: 167, spike: '+7,334' },
-    { rank: 2, username: 'STYLE_INCARNATE', score: 88441, tier: 'SINGULAR' as Tier, totalScans: 201, spike: '+5,124' },
-    { rank: 3, username: 'AURA_RADIANT', score: 79203, tier: 'VOLATILE' as Tier, totalScans: 143, spike: '+3,104' },
-    { rank: 4, username: 'RARITY_FLEX', score: 68110, tier: 'VOLATILE' as Tier, totalScans: 119, spike: '+2,032' },
-    { rank: 5, username: 'ELEGANCE_X', score: 59882, tier: 'CHARGED' as Tier, totalScans: 91, spike: '+1,241' },
+    { rank: 1, username: 'PRESENCE_UNLOCKED', score: 93882, tier: 'SS-TIER' as Tier, totalScans: 167, spike: '+7,334' },
+    { rank: 2, username: 'STYLE_INCARNATE', score: 88441, tier: 'SS-TIER' as Tier, totalScans: 201, spike: '+5,124' },
+    { rank: 3, username: 'AURA_RADIANT', score: 79203, tier: 'S-TIER' as Tier, totalScans: 143, spike: '+3,104' },
+    { rank: 4, username: 'RARITY_FLEX', score: 68110, tier: 'S-TIER' as Tier, totalScans: 119, spike: '+2,032' },
+    { rank: 5, username: 'ELEGANCE_X', score: 59882, tier: 'A-TIER' as Tier, totalScans: 91, spike: '+1,241' },
   ],
   pets: [
-    { rank: 1, username: 'CHAOS_DEITY', score: 96110, tier: 'SINGULAR' as Tier, totalScans: 54, spike: '+9,103' },
-    { rank: 2, username: 'MENACE_SUPREME', score: 90221, tier: 'SINGULAR' as Tier, totalScans: 87, spike: '+6,884' },
-    { rank: 3, username: 'INTELLIGENCE_PEAK', score: 82334, tier: 'VOLATILE' as Tier, totalScans: 76, spike: '+4,221' },
-    { rank: 4, username: 'DIVINE_PRESENCE', score: 74882, tier: 'VOLATILE' as Tier, totalScans: 123, spike: '+2,334' },
-    { rank: 5, username: 'BEAST_ENERGY', score: 61044, tier: 'VOLATILE' as Tier, totalScans: 201, spike: '+1,104' },
+    { rank: 1, username: 'CHAOS_DEITY', score: 96110, tier: 'SS-TIER' as Tier, totalScans: 54, spike: '+9,103' },
+    { rank: 2, username: 'MENACE_SUPREME', score: 90221, tier: 'SS-TIER' as Tier, totalScans: 87, spike: '+6,884' },
+    { rank: 3, username: 'INTELLIGENCE_PEAK', score: 82334, tier: 'S-TIER' as Tier, totalScans: 76, spike: '+4,221' },
+    { rank: 4, username: 'DIVINE_PRESENCE', score: 74882, tier: 'S-TIER' as Tier, totalScans: 123, spike: '+2,334' },
+    { rank: 5, username: 'BEAST_ENERGY', score: 61044, tier: 'S-TIER' as Tier, totalScans: 201, spike: '+1,104' },
   ],
   wildcard: [
     { rank: 1, username: 'ABSOLUTE_POWER', score: 100000, tier: 'LIMITLESS' as Tier, totalScans: 412, spike: '+100,000' },
-    { rank: 2, username: 'CHAOS_REIGNS', score: 97331, tier: 'SINGULAR' as Tier, totalScans: 284, spike: '+8,003' },
-    { rank: 3, username: 'UNDEFINED_FORCE', score: 91224, tier: 'SINGULAR' as Tier, totalScans: 198, spike: '+5,441' },
-    { rank: 4, username: 'PURE_ESSENCE', score: 84103, tier: 'VOLATILE' as Tier, totalScans: 156, spike: '+3,204' },
-    { rank: 5, username: 'LIMITLESS_AURA', score: 76882, tier: 'VOLATILE' as Tier, totalScans: 92, spike: '+2,103' },
+    { rank: 2, username: 'CHAOS_REIGNS', score: 97331, tier: 'SS-TIER' as Tier, totalScans: 284, spike: '+8,003' },
+    { rank: 3, username: 'UNDEFINED_FORCE', score: 91224, tier: 'SS-TIER' as Tier, totalScans: 198, spike: '+5,441' },
+    { rank: 4, username: 'PURE_ESSENCE', score: 84103, tier: 'S-TIER' as Tier, totalScans: 156, spike: '+3,204' },
+    { rank: 5, username: 'LIMITLESS_AURA', score: 76882, tier: 'S-TIER' as Tier, totalScans: 92, spike: '+2,103' },
   ],
 };
 
@@ -148,10 +148,10 @@ export default function Leaderboard() {
                 </div>
               </motion.div>
               <div className="text-xs font-bold truncate text-zinc-300">{top3[1]?.username}</div>
-              <div className={`text-sm font-black ${TIER_CONFIG[top3[1]?.tier || 'DORMANT'].color} mb-1 tabular-nums score-display`}>
+              <div className={`text-sm font-black ${TIER_CONFIG[top3[1]?.tier || 'D-TIER'].color} mb-1 tabular-nums score-display`}>
                 <AnimatedScore score={top3[1]?.score || 0} duration={1000} />
               </div>
-              <TierBadge tier={top3[1]?.tier || 'DORMANT'} size="sm" />
+              <TierBadge tier={top3[1]?.tier || 'D-TIER'} size="sm" />
             </div>
 
             {/* 1st Place */}
@@ -177,14 +177,14 @@ export default function Leaderboard() {
               </motion.div>
               <div className="text-sm font-black text-white">{top3[0]?.username}</div>
               <div 
-                className={`text-xl font-black ${TIER_CONFIG[top3[0]?.tier || 'DORMANT'].color} mb-1 tabular-nums score-display`}
+                className={`text-xl font-black ${TIER_CONFIG[top3[0]?.tier || 'D-TIER'].color} mb-1 tabular-nums score-display`}
                 style={{
                   textShadow: isLimitlessTop ? '0 0 30px rgba(245, 158, 11, 0.5)' : undefined
                 }}
               >
                 <AnimatedScore score={top3[0]?.score || 0} duration={1200} />
               </div>
-              <TierBadge tier={top3[0]?.tier || 'DORMANT'} size="md" />
+              <TierBadge tier={top3[0]?.tier || 'D-TIER'} size="md" />
             </div>
 
             {/* 3rd Place */}
@@ -202,10 +202,10 @@ export default function Leaderboard() {
                 </div>
               </motion.div>
               <div className="text-xs font-bold truncate text-zinc-400">{top3[2]?.username}</div>
-              <div className={`text-sm font-black ${TIER_CONFIG[top3[2]?.tier || 'DORMANT'].color} mb-1 tabular-nums score-display`}>
+              <div className={`text-sm font-black ${TIER_CONFIG[top3[2]?.tier || 'D-TIER'].color} mb-1 tabular-nums score-display`}>
                 <AnimatedScore score={top3[2]?.score || 0} duration={1100} />
               </div>
-              <TierBadge tier={top3[2]?.tier || 'DORMANT'} size="sm" />
+              <TierBadge tier={top3[2]?.tier || 'D-TIER'} size="sm" />
             </div>
           </div>
         </motion.div>

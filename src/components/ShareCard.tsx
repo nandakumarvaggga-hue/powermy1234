@@ -151,11 +151,11 @@ export default function ShareCard({
         </div>
 
         {/* Subtle glow effect for high tiers */}
-        {(result.tier === 'SINGULAR' || result.tier === 'LIMITLESS') && (
+        {(result.tier === 'SSS-TIER' || result.tier === 'SS-TIER' || result.tier === 'LIMITLESS') && (
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: `radial-gradient(ellipse at center, ${isLimitless ? 'rgba(245, 158, 11, 0.08)' : 'rgba(251, 113, 133, 0.05)'} 0%, transparent 70%)`
+              background: `radial-gradient(ellipse at center, ${result.tier === 'LIMITLESS' ? 'rgba(245, 158, 11, 0.08)' : 'rgba(251, 113, 133, 0.05)'} 0%, transparent 70%)`
             }}
           />
         )}

@@ -11,29 +11,30 @@ interface LandingProps {
 }
 
 const MOCK_TRENDING = [
-  { id: '1', image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?w=400&h=400&fit=crop', score: 87432, tier: 'SINGULAR' as Tier, category: 'fitness' as Category },
-  { id: '2', image: 'https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?w=400&h=400&fit=crop', score: 74221, tier: 'VOLATILE' as Tier, category: 'setups' as Category },
-  { id: '3', image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=400&h=400&fit=crop', score: 62105, tier: 'VOLATILE' as Tier, category: 'rides' as Category },
-  { id: '4', image: 'https://images.pexels.com/photos/2769274/pexels-photo-2769274.jpeg?w=400&h=400&fit=crop', score: 45882, tier: 'CHARGED' as Tier, category: 'drip' as Category },
-  { id: '5', image: 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?w=400&h=400&fit=crop', score: 96741, tier: 'SINGULAR' as Tier, category: 'pets' as Category },
+  { id: '1', image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?w=400&h=400&fit=crop', score: 87432, tier: 'SS-TIER' as Tier, category: 'fitness' as Category },
+  { id: '2', image: 'https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?w=400&h=400&fit=crop', score: 74221, tier: 'S-TIER' as Tier, category: 'setups' as Category },
+  { id: '3', image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?w=400&h=400&fit=crop', score: 62105, tier: 'S-TIER' as Tier, category: 'rides' as Category },
+  { id: '4', image: 'https://images.pexels.com/photos/2769274/pexels-photo-2769274.jpeg?w=400&h=400&fit=crop', score: 45882, tier: 'A-TIER' as Tier, category: 'drip' as Category },
+  { id: '5', image: 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?w=400&h=400&fit=crop', score: 96741, tier: 'SS-TIER' as Tier, category: 'pets' as Category },
   { id: '6', image: 'https://images.pexels.com/photos/2346216/pexels-photo-2346216.jpeg?w=400&h=400&fit=crop', score: 100000, tier: 'LIMITLESS' as Tier, category: 'wildcard' as Category },
 ];
 
 const MOCK_LEADERBOARD = [
-  { rank: 1, username: 'ULTRAVIOLET_X', score: 99821, tier: 'SINGULAR' as Tier },
-  { rank: 2, username: 'APEX_ENTITY', score: 97403, tier: 'SINGULAR' as Tier },
-  { rank: 3, username: 'THE_HARBINGER', score: 95210, tier: 'SINGULAR' as Tier },
-  { rank: 4, username: 'NEON_GHOST_7', score: 89334, tier: 'SINGULAR' as Tier },
-  { rank: 5, username: 'CRIMSONWAVE', score: 84991, tier: 'VOLATILE' as Tier },
+  { rank: 1, username: 'ULTRAVIOLET_X', score: 99821, tier: 'SSS-TIER' as Tier },
+  { rank: 2, username: 'APEX_ENTITY', score: 97403, tier: 'SSS-TIER' as Tier },
+  { rank: 3, username: 'THE_HARBINGER', score: 95210, tier: 'SS-TIER' as Tier },
+  { rank: 4, username: 'NEON_GHOST_7', score: 89334, tier: 'SS-TIER' as Tier },
+  { rank: 5, username: 'CRIMSONWAVE', score: 84991, tier: 'S-TIER' as Tier },
 ];
 
 const TIER_SHOWCASE = [
-  { tier: 'DORMANT' as Tier },
-  { tier: 'SPARKING' as Tier },
-  { tier: 'RISING' as Tier },
-  { tier: 'CHARGED' as Tier },
-  { tier: 'VOLATILE' as Tier },
-  { tier: 'SINGULAR' as Tier },
+  { tier: 'D-TIER' as Tier },
+  { tier: 'C-TIER' as Tier },
+  { tier: 'B-TIER' as Tier },
+  { tier: 'A-TIER' as Tier },
+  { tier: 'S-TIER' as Tier },
+  { tier: 'SS-TIER' as Tier },
+  { tier: 'SSS-TIER' as Tier },
   { tier: 'LIMITLESS' as Tier },
 ];
 

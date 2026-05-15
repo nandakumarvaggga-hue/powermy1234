@@ -1,22 +1,20 @@
 export type Tier =
-  | 'DORMANT'
-  | 'SPARKING'
-  | 'RISING'
-  | 'CHARGED'
-  | 'VOLATILE'
-  | 'SINGULAR'
+  | 'D-TIER'
+  | 'C-TIER'
+  | 'B-TIER'
+  | 'A-TIER'
+  | 'S-TIER'
+  | 'SS-TIER'
+  | 'SSS-TIER'
   | 'LIMITLESS';
 
 export type Category = 'fitness' | 'setups' | 'rides' | 'drip' | 'pets' | 'wildcard';
 
 export interface Attributes {
   aura: number;
-  drip: number;
-  discipline: number;
-  chaos_energy: number;
-  presence: number;
-  intimidation: number;
-  rarity: number;
+  power: number;
+  status: number;
+  threat: number;
 }
 
 export interface Scan {
@@ -51,83 +49,92 @@ export interface Profile {
 }
 
 export const TIER_CONFIG: Record<Tier, { color: string; bgColor: string; borderColor: string; label: string; range: string; description: string }> = {
-  DORMANT: {
-    color: 'text-zinc-400',
-    bgColor: 'bg-zinc-900/80',
-    borderColor: 'border-zinc-700',
-    label: 'DORMANT',
-    range: '0 – 999',
-    description: 'The energy sleeps.',
+  'D-TIER': {
+    color: 'text-slate-300',
+    bgColor: 'bg-slate-900/80',
+    borderColor: 'border-slate-700',
+    label: 'D-TIER',
+    range: '0 – 12,499',
+    description: 'The journey begins.',
   },
-  SPARKING: {
-    color: 'text-sky-400',
-    bgColor: 'bg-sky-950/80',
-    borderColor: 'border-sky-800',
-    label: 'SPARKING',
-    range: '1K – 9,999',
-    description: 'Something stirs within.',
+  'C-TIER': {
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-950/80',
+    borderColor: 'border-blue-800',
+    label: 'C-TIER',
+    range: '12,500 – 24,999',
+    description: 'Climbing the ranks.',
   },
-  RISING: {
+  'B-TIER': {
+    color: 'text-cyan-400',
+    bgColor: 'bg-cyan-950/80',
+    borderColor: 'border-cyan-800',
+    label: 'B-TIER',
+    range: '25,000 – 37,499',
+    description: 'Respectable. Competitive.',
+  },
+  'A-TIER': {
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-950/80',
     borderColor: 'border-emerald-800',
-    label: 'RISING',
-    range: '10K – 29,999',
-    description: 'Power is awakening.',
+    label: 'A-TIER',
+    range: '37,500 – 49,999',
+    description: 'Elite status achieved.',
   },
-  CHARGED: {
+  'S-TIER': {
     color: 'text-amber-400',
     bgColor: 'bg-amber-950/80',
-    borderColor: 'border-amber-800',
-    label: 'CHARGED',
-    range: '30K – 59,999',
-    description: 'Radiating dangerous energy.',
+    borderColor: 'border-amber-700',
+    label: 'S-TIER',
+    range: '50,000 – 74,999',
+    description: 'Extremely rare.',
   },
-  VOLATILE: {
+  'SS-TIER': {
     color: 'text-orange-400',
     bgColor: 'bg-orange-950/80',
-    borderColor: 'border-orange-800',
-    label: 'VOLATILE',
-    range: '60K – 84,999',
-    description: 'Unstable. Uncontrollable.',
+    borderColor: 'border-orange-700',
+    label: 'SS-TIER',
+    range: '75,000 – 89,999',
+    description: 'Legendary dominance.',
   },
-  SINGULAR: {
+  'SSS-TIER': {
     color: 'text-rose-400',
-    bgColor: 'bg-rose-950/80',
-    borderColor: 'border-rose-800',
-    label: 'SINGULAR',
-    range: '85K – 99,999',
-    description: 'One of a kind. Permanently.',
+    bgColor: 'bg-gradient-to-br from-rose-950/90 to-pink-950/90',
+    borderColor: 'border-rose-600',
+    label: 'SSS-TIER',
+    range: '90,000 – 99,999',
+    description: 'One in a billion.',
   },
   LIMITLESS: {
     color: 'text-amber-300',
     bgColor: 'bg-gradient-to-br from-amber-950/90 to-orange-950/90',
     borderColor: 'border-amber-500',
     label: 'LIMITLESS',
-    range: '100,000',
+    range: '100,000+',
     description: 'Beyond measurement.',
   },
 };
 
 export function getTier(score: number): Tier {
   if (score >= 100000) return 'LIMITLESS';
-  if (score >= 85000) return 'SINGULAR';
-  if (score >= 60000) return 'VOLATILE';
-  if (score >= 30000) return 'CHARGED';
-  if (score >= 10000) return 'RISING';
-  if (score >= 1000) return 'SPARKING';
-  return 'DORMANT';
+  if (score >= 90000) return 'SSS-TIER';
+  if (score >= 75000) return 'SS-TIER';
+  if (score >= 50000) return 'S-TIER';
+  if (score >= 37500) return 'A-TIER';
+  if (score >= 25000) return 'B-TIER';
+  if (score >= 12500) return 'C-TIER';
+  return 'D-TIER';
 }
 
 export const CATEGORIES: Record<Category, { label: string; emoji: string; color: string; bgColor: string; borderColor: string; description: string; attributes: string[] }> = {
   setups: {
-    label: 'SETUPS',
+    label: 'SETUP',
     emoji: '🖥',
     color: 'text-cyan-400',
     bgColor: 'bg-cyan-950/80',
     borderColor: 'border-cyan-800',
-    description: 'Tech dominance and focus.',
-    attributes: ['focus', 'rarity', 'productivity', 'chaos_energy'],
+    description: 'Processing power and productivity.',
+    attributes: ['processing_power', 'lock_in_rate', 'build_quality', 'threat_output', 'rgb_stability'],
   },
   fitness: {
     label: 'FITNESS',
@@ -135,8 +142,8 @@ export const CATEGORIES: Record<Category, { label: string; emoji: string; color:
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-950/80',
     borderColor: 'border-emerald-800',
-    description: 'Physical power and discipline.',
-    attributes: ['discipline', 'intensity', 'physique', 'aura'],
+    description: 'Strength and discipline.',
+    attributes: ['power_output', 'discipline_index', 'stamina_core', 'aura_level', 'threat_rating'],
   },
   rides: {
     label: 'RIDES',
@@ -144,8 +151,8 @@ export const CATEGORIES: Record<Category, { label: string; emoji: string; color:
     color: 'text-orange-400',
     bgColor: 'bg-orange-950/80',
     borderColor: 'border-orange-800',
-    description: 'Raw threat and dominance.',
-    attributes: ['dominance', 'threat', 'aura', 'rarity'],
+    description: 'Dominance and presence.',
+    attributes: ['horsepower_aura', 'dominance_output', 'street_presence', 'threat_level', 'engine_energy'],
   },
   drip: {
     label: 'DRIP',
@@ -153,8 +160,8 @@ export const CATEGORIES: Record<Category, { label: string; emoji: string; color:
     color: 'text-pink-400',
     bgColor: 'bg-pink-950/80',
     borderColor: 'border-pink-800',
-    description: 'Style and presence.',
-    attributes: ['presence', 'drip', 'aura', 'rarity'],
+    description: 'Style and social appeal.',
+    attributes: ['rizz_level', 'style_sync', 'flex_value', 'trend_energy', 'aura_output'],
   },
   pets: {
     label: 'PETS',
@@ -162,8 +169,8 @@ export const CATEGORIES: Record<Category, { label: string; emoji: string; color:
     color: 'text-amber-400',
     bgColor: 'bg-amber-950/80',
     borderColor: 'border-amber-800',
-    description: 'Chaotic divine entities.',
-    attributes: ['menace', 'chaos', 'intelligence', 'divine_aura'],
+    description: 'Chaos and divine energy.',
+    attributes: ['menace_level', 'chaos_index', 'divine_energy', 'brain_activity', 'aura_output'],
   },
   wildcard: {
     label: 'WILDCARD',
@@ -172,6 +179,20 @@ export const CATEGORIES: Record<Category, { label: string; emoji: string; color:
     bgColor: 'bg-amber-900/80',
     borderColor: 'border-amber-700',
     description: 'Anything. Everything.',
-    attributes: ['aura', 'drip', 'discipline', 'chaos_energy'],
+    attributes: ['aura', 'power', 'status', 'threat'],
   },
 };
+
+// Migration function for backwards compatibility with old tier system
+export function migrateLegacyTier(oldTier: string): Tier {
+  const legacyMap: Record<string, Tier> = {
+    'DORMANT': 'D-TIER',
+    'SPARKING': 'C-TIER',
+    'RISING': 'B-TIER',
+    'CHARGED': 'A-TIER',
+    'VOLATILE': 'S-TIER',
+    'SINGULAR': 'SS-TIER',
+    'LIMITLESS': 'LIMITLESS',
+  };
+  return legacyMap[oldTier] || 'D-TIER';
+}
