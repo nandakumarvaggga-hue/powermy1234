@@ -3,7 +3,7 @@ import { Zap, ArrowRight, Trophy, Flame, TrendingUp, Sparkles } from 'lucide-rea
 import { useRef } from 'react';
 import TierBadge from '../components/TierBadge';
 import AnimatedScore from '../components/AnimatedScore';
-import { CATEGORIES, TIER_CONFIG } from '../lib/types';
+import { TIER_CONFIG, CATEGORY_CONFIG } from '../lib/config/tier-config';
 import type { Tier, Category } from '../lib/types';
 
 interface LandingProps {
@@ -172,7 +172,7 @@ export default function Landing({ onNavigate }: LandingProps) {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {MOCK_TRENDING.map((item, i) => {
               const tierConfig = TIER_CONFIG[item.tier];
-              const catConfig = CATEGORIES[item.category];
+              const catConfig = CATEGORY_CONFIG[item.category];
               const isLimitless = item.tier === 'LIMITLESS';
               return (
                 <motion.div

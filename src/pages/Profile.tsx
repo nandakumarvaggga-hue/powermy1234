@@ -5,7 +5,7 @@ import TierBadge from '../components/TierBadge';
 import CategorySelector from '../components/CategorySelector';
 import AnimatedScore from '../components/AnimatedScore';
 import { formatScore } from '../lib/scoring';
-import { TIER_CONFIG, CATEGORIES } from '../lib/types';
+import { TIER_CONFIG, CATEGORY_CONFIG } from '../lib/config/tier-config';
 import type { Tier, Category } from '../lib/types';
 
 const MOCK_PROFILE = {
@@ -46,7 +46,7 @@ const MOCK_SCAN_HISTORY = [
 export default function Profile({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [selectedCategory, setSelectedCategory] = useState<Category>('setups');
   const categoryStats = CATEGORY_STATS[selectedCategory];
-  const categoryConfig = CATEGORIES[selectedCategory];
+  const categoryConfig = CATEGORY_CONFIG[selectedCategory];
 
   // Find best category
   const bestCategory = Object.entries(CATEGORY_STATS).reduce((best, [cat, stats]) => {
@@ -210,7 +210,7 @@ export default function Profile({ onNavigate }: { onNavigate: (page: string) => 
           <div className="grid grid-cols-3 gap-2 mb-8">
             {MOCK_SCAN_HISTORY.map((scan, i) => {
               const config = TIER_CONFIG[scan.tier];
-              const catConfig = CATEGORIES[scan.category];
+              const catConfig = CATEGORY_CONFIG[scan.category];
               const isLimitless = scan.tier === 'LIMITLESS';
               return (
                 <motion.div

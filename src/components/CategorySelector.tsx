@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Category } from '../lib/types';
-import { CATEGORIES } from '../lib/types';
+import { CATEGORY_CONFIG } from '../lib/config/tier-config';
 
 interface CategorySelectorProps {
   selected: Category;
@@ -14,7 +14,7 @@ export default function CategorySelector({ selected, onSelect }: CategorySelecto
   return (
     <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
       {categories.map((cat) => {
-        const config = CATEGORIES[cat];
+        const config = CATEGORY_CONFIG[cat];
         const isSelected = selected === cat;
         const isSetups = cat === 'setups';
 

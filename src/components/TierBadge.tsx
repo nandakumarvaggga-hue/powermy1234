@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import type { Tier } from '../lib/types';
-import { TIER_CONFIG } from '../lib/types';
+import { TIER_CONFIG } from '../lib/config/tier-config';
+import { ANIMATION_PRESETS } from '../lib/utils/animations';
 
 interface TierBadgeProps {
   tier: Tier;
@@ -26,7 +27,8 @@ export default function TierBadge({ tier, size = 'md', animate = false }: TierBa
     <motion.div
       initial={animate ? { scale: 0, opacity: 0 } : false}
       animate={animate ? { scale: 1, opacity: 1 } : false}
-      transition={{ type: 'spring', damping: 12, stiffness: 200 }}
+      whileHover={{ scale: 1.05, y: -1 }}
+      transition={animate ? { type: 'spring', damping: 12, stiffness: 200 } : { duration: 0.2 }}
       className={`
         inline-flex items-center font-black border rounded
         ${sizeClasses[size]} 
@@ -36,6 +38,7 @@ export default function TierBadge({ tier, size = 'md', animate = false }: TierBa
         ${isSSST ? 'shadow-[0_0_12px_rgba(251,113,133,0.2)]' : ''}
         ${isSST ? 'shadow-[0_0_10px_rgba(251,146,60,0.15)]' : ''}
         ${isST ? 'shadow-[0_0_8px_rgba(251,191,36,0.1)]' : ''}
+        transition-all duration-300 cursor-default
       `}
     >
       {isLimitless && (

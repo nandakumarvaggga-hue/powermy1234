@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import type { ScanResult } from '../lib/scoring';
 import { formatScore } from '../lib/scoring';
-import { TIER_CONFIG, CATEGORIES } from '../lib/types';
+import { TIER_CONFIG, CATEGORY_CONFIG } from '../lib/config/tier-config';
 
 interface ShareCardProps {
   imageUrl: string;
@@ -17,7 +17,7 @@ export default function ShareCard({
   description = ''
 }: ShareCardProps) {
   const tierConfig = TIER_CONFIG[result.tier];
-  const categoryConfig = CATEGORIES[result.category];
+  const categoryConfig = CATEGORY_CONFIG[result.category];
 
   // Get top 4 attributes to display
   const displayAttrs = Object.entries(result.categoryAttributes)

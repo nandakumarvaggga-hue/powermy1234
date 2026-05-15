@@ -3,7 +3,7 @@ import { Flame, Clock, TrendingUp, Heart, Zap, MessageCircle, Share2 } from 'luc
 import { useState } from 'react';
 import TierBadge from '../components/TierBadge';
 import AnimatedScore from '../components/AnimatedScore';
-import { TIER_CONFIG, CATEGORIES } from '../lib/types';
+import { TIER_CONFIG, CATEGORY_CONFIG } from '../lib/config/tier-config';
 import type { Tier, Category } from '../lib/types';
 
 interface FeedProps {
@@ -164,7 +164,7 @@ export default function Feed({ onNavigate }: FeedProps) {
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {(['all', 'setups', 'fitness', 'rides', 'drip', 'pets', 'wildcard'] as const).map((cat) => {
               const isAll = cat === 'all';
-              const config = isAll ? null : CATEGORIES[cat as Category];
+              const config = isAll ? null : CATEGORY_CONFIG[cat as Category];
               const isSelected = categoryFilter === cat;
 
               return (
@@ -192,7 +192,7 @@ export default function Feed({ onNavigate }: FeedProps) {
         <div className="space-y-4">
           {filteredFeed.map((post, i) => {
             const tierConfig = TIER_CONFIG[post.tier];
-            const categoryConfig = CATEGORIES[post.category];
+            const categoryConfig = CATEGORY_CONFIG[post.category];
             const isLiked = likedIds.has(post.id);
             const isLimitless = post.tier === 'LIMITLESS';
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { ANIMATION_PRESETS } from '../lib/utils/animations';
 
 interface AttributeBarProps {
   label: string;
@@ -101,26 +102,31 @@ export default function AttributeBar({ label, value, delay = 0 }: AttributeBarPr
   };
 
   return (
-    <div className="space-y-2">
+    <motion.div 
+      className="space-y-2"
+      initial={{ opacity: 0, y: 4 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.3, ease: 'easeOut' }}
+    >
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-500">{label}</span>
         <motion.span 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: delay + 0.3 }}
-          className={`text-xs font-black tabular-nums ${value >= 90 ? 'text-amber-400' : value >= 75 ? 'text-amber-500' : 'text-white'}`}
+          initial={{ opacity: 0, x: 4 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: delay + 0.2, duration: 0.3 }}
+          className={`text-xs font-black tabular-nums transition-colors duration-300 ${value >= 90 ? 'text-amber-400' : value >= 75 ? 'text-amber-500' : 'text-white'}`}
         >
           {getFormattedValue()}
         </motion.span>
       </div>
-      <div className="h-2 bg-zinc-800/80 rounded-full overflow-hidden">
+      <div className="h-2 bg-zinc-800/80 rounded-full overflow-hidden backdrop-blur-sm">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${value}%` }}
-          transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
-          className={`h-full rounded-full ${barColor} ${getGlow()}`}
+          transition={{ duration: 1, delay: delay + 0.1, ease: [0.34, 1.56, 0.64, 1] }}
+          className={`h-full rounded-full ${barColor} ${getGlow()} transition-shadow duration-300`}
         />
       </div>
-    </div>
+    </motion.div>
   );
 }

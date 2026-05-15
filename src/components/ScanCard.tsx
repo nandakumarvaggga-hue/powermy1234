@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Heart, Zap } from 'lucide-react';
 import type { Scan } from '../lib/types';
-import { TIER_CONFIG } from '../lib/types';
+import { TIER_CONFIG } from '../lib/config/tier-config';
 import TierBadge from './TierBadge';
 import { formatScore } from '../lib/scoring';
 

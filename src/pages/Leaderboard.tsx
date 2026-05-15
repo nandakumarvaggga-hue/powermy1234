@@ -4,7 +4,7 @@ import { useState } from 'react';
 import TierBadge from '../components/TierBadge';
 import CategorySelector from '../components/CategorySelector';
 import AnimatedScore from '../components/AnimatedScore';
-import { TIER_CONFIG, CATEGORIES } from '../lib/types';
+import { TIER_CONFIG, CATEGORY_CONFIG } from '../lib/config/tier-config';
 import type { Tier, Category } from '../lib/types';
 
 const LEADERBOARD_DATA: Record<Category, Array<{ rank: number; username: string; score: number; tier: Tier; totalScans: number; spike: string }>> = {
@@ -89,7 +89,7 @@ export default function Leaderboard() {
   const [category, setCategory] = useState<Category>('setups');
   const data = LEADERBOARD_DATA[category];
   const images = TOP3_IMAGES[category];
-  const categoryConfig = CATEGORIES[category];
+  const categoryConfig = CATEGORY_CONFIG[category];
   const top3 = data.slice(0, 3);
   const rest = data.slice(3);
 

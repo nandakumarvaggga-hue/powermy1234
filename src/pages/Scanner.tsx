@@ -8,7 +8,7 @@ import CategorySelector from '../components/CategorySelector';
 import ShareCard from '../components/ShareCard';
 import ScannerReveal from '../components/ScannerReveal';
 import { generateScanResult, formatScore } from '../lib/scoring';
-import { TIER_CONFIG, CATEGORIES } from '../lib/types';
+import { TIER_CONFIG, CATEGORY_CONFIG } from '../lib/config/tier-config';
 import type { ScanResult } from '../lib/scoring';
 import type { Category } from '../lib/types';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
@@ -159,7 +159,7 @@ export default function Scanner() {
   };
 
   const tierConfig = result ? TIER_CONFIG[result.tier] : null;
-  const categoryConfig = result ? CATEGORIES[result.category] : null;
+  const categoryConfig = result ? CATEGORY_CONFIG[result.category] : null;
   const isLimitless = result?.tier === 'LIMITLESS';
 
   return (
