@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Trophy, Crown, Zap, TrendingUp, Sparkles } from 'lucide-react';
 import { useState } from 'react';

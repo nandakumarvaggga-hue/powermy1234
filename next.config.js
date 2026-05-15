@@ -3,6 +3,11 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
   },
+  turbopack: {
+    resolveAlias: {
+      '@': './app',
+    },
+  },
 }
 
-module.exports = nextConfig
+export default nextConfig

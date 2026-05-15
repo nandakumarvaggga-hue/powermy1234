@@ -1,7 +1,8 @@
 import { generateText, Output } from 'ai'
 import * as z from 'zod'
-import { getTier, CATEGORIES, type Category } from '@/lib/types'
-import { consumeScan, canScan } from '@/lib/user-store'
+import { getTier, type Category } from '../../lib/types'
+import { CATEGORY_CONFIG } from '../../lib/config/tier-config'
+import { consumeScan, canScan } from '../../lib/user-store'
 
 const scoreSchema = z.object({
   score: z.number().min(0).max(100000).describe('The overall power level score from 0 to 100000'),
@@ -28,7 +29,7 @@ export async function POST(req: Request) {
       )
     }
 
-    const categoryConfig = CATEGORIES[category as Category] || CATEGORIES.wildcard
+    const categoryConfig = CATEGORY_CONFIG[category as Category] || CATEGORY_CONFIG.wildcard
     const categoryName = categoryConfig.label
     const categoryAttributes = categoryConfig.attributes
 

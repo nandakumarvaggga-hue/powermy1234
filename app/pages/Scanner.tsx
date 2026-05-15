@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, Camera, Zap, Share2, RotateCcw, Download, Sparkles } from 'lucide-react';
 import { useState, useRef, useCallback } from 'react';

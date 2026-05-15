@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Zap, Award, BarChart2, TrendingUp, Star, Trophy, Flame } from 'lucide-react';
 import { useState } from 'react';

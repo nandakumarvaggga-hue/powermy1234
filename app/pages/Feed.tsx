@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Flame, Clock, TrendingUp, Heart, Zap, MessageCircle, Share2 } from 'lucide-react';
 import { useState } from 'react';

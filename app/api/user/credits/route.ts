@@ -1,4 +1,4 @@
-import { getUserData } from '@/lib/user-store'
+import { getUserData } from '../../../lib/user-store'
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)

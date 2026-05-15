@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Zap, ArrowRight, Trophy, Flame, TrendingUp, Sparkles } from 'lucide-react';
 import { useRef } from 'react';
