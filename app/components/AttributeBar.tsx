@@ -103,26 +103,49 @@ export default function AttributeBar({ label, value, delay = 0 }: AttributeBarPr
   };
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <span className="text-[10px] font-bold tracking-[0.2em] text-zinc-500">{label}</span>
+    <motion.div 
+      className="space-y-2.5 group"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+    >
+      <div className="flex items-center justify-between gap-2">
         <motion.span 
+          className="text-[9px] font-bold tracking-[0.25em] text-zinc-400 uppercase"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: delay + 0.3 }}
-          className={`text-xs font-black tabular-nums ${value >= 90 ? 'text-amber-400' : value >= 75 ? 'text-amber-500' : 'text-white'}`}
+          transition={{ delay: delay + 0.1 }}
+        >
+          {label}
+        </motion.span>
+        <motion.span 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: delay + 0.2, duration: 0.3 }}
+          className={`text-xs font-black tabular-nums score-display transition-colors duration-300 ${
+            value >= 90 ? 'text-amber-300' : value >= 75 ? 'text-amber-400' : 'text-zinc-300'
+          }`}
         >
           {getFormattedValue()}
         </motion.span>
       </div>
-      <div className="h-2 bg-zinc-800/80 rounded-full overflow-hidden">
+      <div className="relative h-3 bg-zinc-800/60 rounded-full overflow-hidden backdrop-blur-sm border border-zinc-700/50 group-hover:border-zinc-600/80 transition-colors duration-300">
         <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${value}%` }}
-          transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
-          className={`h-full rounded-full ${barColor} ${getGlow()}`}
-        />
+          initial={{ width: 0, opacity: 0 }}
+          animate={{ width: `${value}%`, opacity: 1 }}
+          transition={{ duration: 1.2, delay: delay + 0.1, ease: [0.34, 1.56, 0.64, 1] }}
+          className={`h-full rounded-full ${barColor} ${getGlow()} transition-shadow duration-300 relative`}
+          style={{
+            boxShadow: value >= 90 ? '0 0 20px rgba(245,158,11,0.5), inset 0 0 8px rgba(255,255,255,0.1)' : undefined
+          }}
+        >
+          <motion.div
+            animate={{ opacity: [0.3, 0.8, 0.3] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
+          />
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

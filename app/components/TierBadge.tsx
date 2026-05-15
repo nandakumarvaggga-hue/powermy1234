@@ -26,39 +26,47 @@ export default function TierBadge({ tier, size = 'md', animate = false }: TierBa
 
   return (
     <motion.div
-      initial={animate ? { scale: 0, opacity: 0 } : false}
-      animate={animate ? { scale: 1, opacity: 1 } : false}
-      transition={{ type: 'spring', damping: 12, stiffness: 200 }}
+      initial={animate ? { scale: 0.5, opacity: 0, rotateZ: -15 } : false}
+      animate={animate ? { scale: 1, opacity: 1, rotateZ: 0 } : false}
+      whileHover={{ scale: 1.08, y: -2 }}
+      transition={animate ? { type: 'spring', damping: 10, stiffness: 300, duration: 0.6 } : { duration: 0.2 }}
       className={`
-        inline-flex items-center font-black border rounded
+        inline-flex items-center gap-1.5 font-black border rounded-lg px-3.5 py-1.5 tracking-wider
+        transition-all duration-300 cursor-default relative group
         ${sizeClasses[size]} 
         ${config.color} 
         ${config.borderColor} 
-        ${isLimitless ? 'bg-gradient-to-r from-amber-950/80 to-orange-950/80 shadow-[0_0_15px_rgba(245,158,11,0.2)]' : config.bgColor}
-        ${isSSST ? 'shadow-[0_0_12px_rgba(251,113,133,0.2)]' : ''}
-        ${isSST ? 'shadow-[0_0_10px_rgba(251,146,60,0.15)]' : ''}
-        ${isST ? 'shadow-[0_0_8px_rgba(251,191,36,0.1)]' : ''}
+        ${isLimitless ? 'bg-gradient-to-r from-amber-950/90 to-orange-950/90 shadow-[0_0_20px_rgba(245,158,11,0.3)]' : config.bgColor}
+        ${isSSST ? 'shadow-[0_0_16px_rgba(251,113,133,0.25)]' : ''}
+        ${isSST ? 'shadow-[0_0_14px_rgba(251,146,60,0.2)]' : ''}
+        ${isST ? 'shadow-[0_0_12px_rgba(251,191,36,0.15)]' : ''}
+        hover:shadow-lg
       `}
     >
       {isLimitless && (
         <motion.span 
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="mr-1 text-amber-400"
+          animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.2, 1] }}
+          transition={{ repeat: Infinity, duration: 1.2 }}
+          className="text-base"
         >
           ◆
         </motion.span>
       )}
       {isSSST && (
         <motion.span 
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ repeat: Infinity, duration: 1.2 }}
-          className="mr-1 text-rose-400"
+          animate={{ opacity: [0.7, 1, 0.7], rotate: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.4 }}
+          className="text-base"
         >
           ★
         </motion.span>
       )}
-      {config.label}
+      <span className="tier-label">{config.label}</span>
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileHover={{ opacity: 1, scale: 1 }}
+        className="absolute inset-0 rounded-lg bg-gradient-to-r from-amber-500/10 to-cyan-500/10 pointer-events-none"
+      />
     </motion.div>
   );
 }
